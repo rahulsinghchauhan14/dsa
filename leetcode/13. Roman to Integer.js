@@ -44,3 +44,42 @@ var romanToInt = function(s) {
     return ans;
     
 };
+
+
+
+
+
+////////// 83 ms
+var romanToInt = function(s) {
+    let characterMap = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+    
+    let group = 0;
+    let result = 0;
+    
+    for(let n=0; n<s.length; n++){
+        const character = s[n];
+        const prevNum = characterMap[s[n-1]];
+        const currentNum = characterMap[character];
+            
+        if(prevNum < currentNum) {
+            group = currentNum - group;
+            continue;
+        }
+        if(prevNum > currentNum){
+            result += group
+            group = 0;
+        }
+        group += currentNum;
+    }
+    
+    result += group;
+    return result
+};
