@@ -23,3 +23,7 @@ for($i=0; $i < $n-2; $i++){
 print_r($arr);
 
 ?>
+
+BestCase  - O(n^2)
+WorstCase - O(n^2)
+AvgCase   - O(n^2)
