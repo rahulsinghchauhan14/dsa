@@ -6,7 +6,7 @@
 $arr =  [10,9,8,7,6,5,4,3,2,1]; 
 $n = count($arr);
 
-for($i=0; $i<=$n-1; $i++){
+for($i=0; $i < $n; $i++){
     $j = $i;
   while($j > 0 && $arr[$j-1] > $arr[$j]){
       $temp = $arr[$j-1];
