@@ -1,5 +1,5 @@
 /*
-Quick Sort
+Quick Sort [ Divide and conquer ]
 ASC order
 after tweaks DESC order
 Better than MergeSort
@@ -36,3 +36,54 @@ when pivot is placed in the correct order let pivot as a partition index
 
 
 */
+
+<?php  
+
+$array = [1,3,2,5,4,65,34,23,13];
+
+function swap($i,$j){
+  $temp = $i;
+  $i = $j;
+  $j = $temp;
+}
+
+function partition(&$arr, $low, $high){
+  $pivot = $arr[$low];
+  $i = $low;
+  $j = $high;
+  while($i < $j){
+    while($arr[$i] <= $pivot && $i <= $high - 1){
+      $i++;
+    }
+    
+    while($arr[$j] > $pivot && $j >= $low + 1){
+      $j--;
+    }
+    
+    if($i < $j){
+      swap($arr[$i], $arr[$j]);
+    }
+  }
+  
+  swap($arr[$low], $arr[$j]);
+  return $j;
+  
+}
+
+function qs(&$arr, $low, $high){
+  if($low < $high){
+    $pIndex = partition($arr, $low, $high);
+    qs($arr, $low, $pIndex-1);
+    qs($arr, $pIndex+1, $high);
+  }
+}
+
+function quickSort($arr){
+  qs($arr, 0, count($arr)-1);
+  return $arr;
+}
+
+quickSort($array);
+
+?>
+
