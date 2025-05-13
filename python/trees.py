@@ -119,7 +119,22 @@ def sum_of_left_leaves(root):
 
     return total_sum
 
+def check_diameter(root):
+    diameter = [0]
+    def calculateDiameter(node):
+        if not node:
+            return 0
+        
+        left_height = calculateDiameter(node.left)
+        right_height = calculateDiameter(node.right)
 
+        diameter[0] = max(diameter[0], left_height + right_height)
+
+        return 1 + max(left_height, right_height)
+    
+    calculateDiameter(root)
+    return diameter[0]
+    
 
 root = None
 keys = [5, 10, 2, 30, 15, 3, 9, 1, 20, 8, 6, 4, 7]
